@@ -1,0 +1,24 @@
+{
+  "name": "timberbit",
+  "version": "1.0.0",
+  "description": "Fully customizable theme build on Timber and Zurb Foundation.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frecklebit/timberbit.git"
+  },
+  "keywords": [
+    "WordPress",
+    "Timber",
+    "Foundation"
+  ],
+  "author": "Adam Jenkins",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/frecklebit/timberbit/issues"
+  },
+  "homepage": "https://github.com/frecklebit/timberbit#readme"
+}
