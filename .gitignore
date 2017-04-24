@@ -1,2 +1,5 @@
-vendor
-wp-content
+.DS_Store
+node_modules
+npm-debug.log
+bower_components
+*.swp
