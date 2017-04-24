@@ -1,12 +1,12 @@
 {
-  "name": "upstatement/timber-starter-theme",
-  "description": "Starter theme to build a Timber theme",
+  "name": "frecklebit/timberbit",
+  "description": "Fully customizable theme build on Timber and Zurb Foundation.",
   "type":"wordpress-theme",
   "minimum-stability" : "stable",
   "authors": [
       {
-          "name": "jarednova",
-          "email": "jared@upstatement.com"
+          "name": "Adam Jenkins",
+          "email": "adam@frecklebit.com"
       }
   ],
   "repositories": [
