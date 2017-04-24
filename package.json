@@ -2,9 +2,10 @@
   "name": "timberbit",
   "version": "1.0.0",
   "description": "Fully customizable theme build on Timber and Zurb Foundation.",
-  "main": "index.js",
+  "main": "gulpfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "gulp",
+    "build": "gulp build --production"
   },
   "repository": {
     "type": "git",
@@ -15,10 +16,36 @@
     "Timber",
     "Foundation"
   ],
-  "author": "Adam Jenkins",
+  "author": "Adam Jenkins <adam@frecklebit.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/frecklebit/timberbit/issues"
   },
-  "homepage": "https://github.com/frecklebit/timberbit#readme"
+  "homepage": "https://github.com/frecklebit/timberbit#readme",
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
+  "private": true,
+  "devDependencies": {
+    "babel-preset-es2015": "^6.3.13",
+    "babel-register": "^6.7.2",
+    "browser-sync": "^2.10.0",
+    "gulp": "gulpjs/gulp#4.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-babel": "^6.1.2",
+    "gulp-cli": "^1.2.1",
+    "gulp-concat": "^2.5.2",
+    "gulp-cssnano": "^2.1.0",
+    "gulp-if": "^2.0.1",
+    "gulp-imagemin": "^3.1.1",
+    "gulp-load-plugins": "^1.4.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^2.2.0",
+    "gulp-uglify": "^2.0.0",
+    "gulp-uncss": "^1.0.1",
+    "js-yaml": "^3.6.1",
+    "yargs": "^6.3.0"
+  }
 }

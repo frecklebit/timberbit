@@ -1,0 +1,23 @@
+{
+  "name": "timberbit",
+  "description": "Fully customizable theme build on Timber and Zurb Foundation.",
+  "main": "gulpfile.js",
+  "authors": [
+    "Adam Jenkins <adam@frecklebit.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "WordPress",
+    "Timber",
+    "Foundation"
+  ],
+  "homepage": "https://github.com/frecklebit/timberbit",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
