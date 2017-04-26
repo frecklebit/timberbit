@@ -15,8 +15,8 @@ register_nav_menus( array(
 // Desktop navigation - right top bar
 // @link http://codex.wordpress.org/Function_Reference/wp_nav_menu
 if ( ! function_exists( 'timberpress_top_bar_r' ) ) :
-	wp_nav_menu( array(
 function timberpress_top_bar_r() {
+	wp_nav_menu( array(
 		'container'      => false,
 		'menu_class'     => 'dropdown menu',
 		'items_wrap'     => '<ul id="%1$s" class="%2$s desktop-menu" data-dropdown-menu>%3$s</ul>',
@@ -30,8 +30,8 @@ endif;
 
 // Mobile navigation -topbar (default) or offcanvas
 if ( ! function_exists( 'timberpress_mobile_nav' ) ) :
-	wp_nav_menu( array(
 function timberpress_mobile_nav() {
+	wp_nav_menu( array(
 		'container'      => false,
 		'menu'           => __( 'mobile-nav', 'timberpress' ),
 		'menu_class'     => 'vertical menu',
