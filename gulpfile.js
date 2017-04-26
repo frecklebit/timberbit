@@ -71,6 +71,8 @@ var PATHS = {
     '**/*.php',
     '!wpcs',
     '!wpcs/**',
+    '!vendor',
+    '!vendor/**',
   ],
   pkg: [
     '**/*',
