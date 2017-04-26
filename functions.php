@@ -74,6 +74,12 @@ require_once( 'library/sticky-posts.php' );
 // Configure responsive images
 require_once( 'library/responsive-images.php' );
 
+// Add filters, helpers, etc to twig
+require_once( 'library/add-to-twig.php' );
+
+// Add to global context
+require_once( 'library/add-to-context.php' );
+
 
 class TimberPress extends TimberSite {
 
