@@ -1,7 +1,6 @@
 {
-  "name": "timberbit",
+  "name": "timberpress",
   "description": "Fully customizable theme build on Timber and Zurb Foundation.",
-  "main": "gulpfile.js",
   "authors": [
     "Adam Jenkins <adam@frecklebit.com>"
   ],
@@ -13,11 +12,14 @@
   ],
   "homepage": "https://github.com/frecklebit/timberbit",
   "private": true,
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ]
+  "main": [
+    "assets/css/foundation.css",
+    "assets/js/foundation.js"
+  ],
+  "ignore": [],
+  "dependencies": {
+    "foundation-sites": "~6.3.0",
+    "motion-ui" : "~1.2.0",
+    "fontawesome": "~4.7.0"
+  }
 }

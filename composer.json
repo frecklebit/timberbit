@@ -1,8 +1,8 @@
 {
-  "name": "frecklebit/timberbit",
+  "name": "frecklebit/timberpress",
   "description": "Fully customizable theme build on Timber and Zurb Foundation.",
-  "type":"wordpress-theme",
-  "minimum-stability" : "stable",
+  "type": "wordpress-theme",
+  "minimum-stability" : "dev",
   "authors": [
       {
           "name": "Adam Jenkins",
@@ -24,6 +24,7 @@
   	}
 	},
   "require": {
+    "composer/installers": "~1.0",
 	  "wpackagist-plugin/timber-library": "0.22.*"
   }
 }

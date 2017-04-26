@@ -1,0 +1,25 @@
+{% if not is_home %}
+<nav aria-label="You are here:" role="navigation">
+  <ul id="{{ breadcrumb.id }}" class="{{ breadcrumb.class }}">
+    {% for crumb in breadcrumb.trail %}
+
+      {# Crumb #}
+      <li class="{{crumb.class}}">
+        {% if not crumb.current %}
+          <a href="{{crumb.link}}" title="{{crumb.title}}">
+            {{crumb.title}}
+          </a>
+        {% else %}
+          <span class="show-for-sr">Current: </span>
+          {{crumb.title}}
+        {% endif %}
+      </li>
+
+      {# Separator #}
+      {% if crumb.separator and not crumb.current %}
+        <li class="separator">{{ crumb.separator }}</li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</nav>
+{% endif %}
