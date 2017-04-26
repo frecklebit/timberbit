@@ -6,7 +6,7 @@
  * @since Timberbit 1.0.0
  */
 
-if ( ! function_exists( 'timberpress_start_cleanup' ) ):
+if ( ! function_exists( 'timberpress_start_cleanup' ) ) :
 function timberpress_start_cleanup() {
 
 	// Launching operation cleanup.
@@ -31,7 +31,7 @@ endif;
 /**
  * Clean up head
  */
-if ( ! function_exists( 'timberpress_cleanup_head' ) ):
+if ( ! function_exists( 'timberpress_cleanup_head' ) ) :
 function timberpress_cleanup_head() {
 
 	// EditURI link
@@ -72,16 +72,17 @@ function timberpress_cleanup_head() {
 
 	// Emoji styles
 	remove_action( 'wp_print_styles', 'print_emoji_styles' );
+
 }
 endif;
 
 // Remove WP version from RSS
-if ( ! function_exists( 'timberpress_remove_rss_version' ) ):
+if ( ! function_exists( 'timberpress_remove_rss_version' ) ) :
 function timberpress_remove_rss_version() { return ''; }
 endif;
 
 // Remove injected CSS for recent comments widget
-if ( ! function_exists( 'timberpress_remove_wp_widget_recent_comments_style' ) ):
+if ( ! function_exists( 'timberpress_remove_wp_widget_recent_comments_style' ) ) :
 function timberpress_remove_wp_widget_recent_comments_style() {
 	if ( has_filter( 'wp_head', 'wp_widget_recent_comments_style' ) ) {
 		remove_filter( 'wp_head', 'wp_widget_recent_comments_style' );
@@ -90,24 +91,24 @@ function timberpress_remove_wp_widget_recent_comments_style() {
 endif;
 
 // Remove injected CSS from recent comments widget
-if ( ! function_exists( 'timberpress_remove_recent_comments_style' ) ):
+if ( ! function_exists( 'timberpress_remove_recent_comments_style' ) ) :
 function timberpress_remove_recent_comments_style() {
 	global $wp_widget_factory;
 	if ( isset($wp_widget_factory->widgets['WP_Widget_Recent_Comments']) ) {
-		remove_action( 'wp_head', array($wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style') );
+		remove_action( 'wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style' ) );
 	}
 }
 endif;
 
 // Remove inline widget attribute from figure tag causing images wider than 100% of its container
-if ( ! function_exists( 'timberpress_remove_figure_inline_style' ) ):
+if ( ! function_exists( 'timberpress_remove_figure_inline_style' ) ) :
 function timberpress_remove_figure_inline_style( $output, $attr, $content ) {
 	$atts = shortcode_atts( array(
-		'id' 			=> '',
-		'align' 	=> 'alignnone',
-		'width' 	=> '',
+		'id'      => '',
+		'align'   => 'alignnone',
+		'width'   => '',
 		'caption' => '',
-		'class' 	=> '',
+		'class'   => '',
 	), $attr, 'caption' );
 
 	$atts['width'] = (int) $atts['width'];
@@ -129,7 +130,7 @@ function timberpress_remove_figure_inline_style( $output, $attr, $content ) {
 endif;
 
 // Add WooCommerce support per wrappers per http://docs.woothemes.com/document/third-party-custom-theme-compatibility/
-remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
-add_action('woocommerce_before_main_content', 'timberpress_before_content', 10);
-remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
-add_action('woocommerce_after_main_content', 'timberpress_after_content', 10);
+remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
+add_action( 'woocommerce_before_main_content', 'timberpress_before_content', 10 );
+remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
+add_action( 'woocommerce_after_main_content', 'timberpress_after_content', 10 );

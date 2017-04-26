@@ -7,7 +7,7 @@
  */
 
 // Pagination
-if ( ! function_exists( 'timberpress_pagination' ) ):
+if ( ! function_exists( 'timberpress_pagination' ) ) :
 function timberpress_pagination() {
 	global $wp_query;
 
@@ -43,7 +43,7 @@ endif;
 /**
  * A fallback when no navigation is selected by default
  */
-if ( ! function_exists( 'timberpress_menu_fallback' ) ):
+if ( ! function_exists( 'timberpress_menu_fallback' ) ) :
 function timberpress_menu_fallback() {
 	echo '<div class="alert-box secondary">';
 	/* translators: %1$s: link to menus, %2$s: link to customize. */
@@ -63,7 +63,7 @@ function timberpress_menu_fallback() {
 endif;
 
 // Add Foundation 'active' class for the current menu item
-if ( ! function_exists( 'timberpress_active_nav_class' ) ):
+if ( ! function_exists( 'timberpress_active_nav_class' ) ) :
 function timberpress_active_nav_class( $classes, $item ) {
 	if ( 1 === $item->current || true === $item->current_item_ancestor ) {
 		$classes[] = 'active';
@@ -74,7 +74,7 @@ add_filter( 'nav_menu_css_class', 'timberpress_active_nav_class', 10, 2 );
 endif;
 
 // Use the active class of ZURB Foundation on wp_list_pages output.
-if ( ! function_exists( 'timberpress_active_list_pages_class' ) ):
+if ( ! function_exists( 'timberpress_active_list_pages_class' ) ) :
 function timberpress_active_list_pages_class( $input ) {
 
 	$pattern = '/current_page_item/';
@@ -87,7 +87,7 @@ add_filter( 'wp_list_pages', 'timberpress_active_list_pages_class', 10, 2 );
 endif;
 
 // Enable Foundation responsive embeds for WP video embeds
-if ( ! function_exists( 'timberpress_responsive_video_oembed_html' ) ):
+if ( ! function_exists( 'timberpress_responsive_video_oembed_html' ) ) :
 function timberpress_responsive_video_oembed_html( $html, $url, $attr, $post_id ) {
 
 	// Whitelist of oEmbed compatible sites that **ONLY** support video.

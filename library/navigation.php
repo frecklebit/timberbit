@@ -15,9 +15,8 @@ register_nav_menus( array(
 // Desktop navigation - right top bar
 // @link http://codex.wordpress.org/Function_Reference/wp_nav_menu
 if ( ! function_exists( 'timberpress_top_bar_r' ) ) :
-function timberpress_top_bar_r()
-{
 	wp_nav_menu( array(
+function timberpress_top_bar_r() {
 		'container'      => false,
 		'menu_class'     => 'dropdown menu',
 		'items_wrap'     => '<ul id="%1$s" class="%2$s desktop-menu" data-dropdown-menu>%3$s</ul>',
@@ -31,9 +30,8 @@ endif;
 
 // Mobile navigation -topbar (default) or offcanvas
 if ( ! function_exists( 'timberpress_mobile_nav' ) ) :
-function timberpress_mobile_nav()
-{
 	wp_nav_menu( array(
+function timberpress_mobile_nav() {
 		'container'      => false,
 		'menu'           => __( 'mobile-nav', 'timberpress' ),
 		'menu_class'     => 'vertical menu',
@@ -53,10 +51,9 @@ endif;
  * 4) Save menu. Your menu item will now appear as a button in your top-menu
  */
 if ( ! function_exists( 'timberpress_add_menuclass' ) ) :
-function timberpress_add_menuclass( $ulclass )
-{
 	$find = array( '/<a rel="button"/', '/<a title=".*?" rel="button"/' );
 	$replace = array( '<a rel="button" class="button"', '<a rel="button" class="button"' );
+function timberpress_add_menuclass( $ulclass ) {
 
 	return preg_replace( $find, $replace, $ulclass, 1 );
 }
@@ -70,8 +67,7 @@ endif;
  * @param bool $separatorclass should a separator class be added (in case :before is not an option).
  */
 if ( ! function_exists( 'timberpress_breadcrumb' ) ) :
-function timberpress_breadcrumb( $showhome = true, $separatorclass = false, $return = false )
-{
+function timberpress_breadcrumb( $showhome = true, $separatorclass = false, $return = false ) {
 
 	$context = Timber::get_context();
 	$trail   = array();

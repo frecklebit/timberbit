@@ -7,10 +7,9 @@
  */
 
 if ( ! function_exists( 'timberpress_sidebar_widgets' ) ) :
-function timberpress_sidebar_widgets()
-{
 	// Left Sidebar
 	register_sidebar( array(
+function timberpress_sidebar_widgets() {
 		'id'            => 'left-sidebar-widgets',
 		'name'          => __( 'Left sidebar widgets', 'timberpress' ),
 		'description'   => __( 'Drag widgets to this sidebar container.', 'timberpress' ),
