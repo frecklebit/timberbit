@@ -106,10 +106,11 @@ gulp.task( 'browser-sync', ['build'], function() {
 // Compile Sass into CSS
 // In production, the CSS is compressed
 gulp.task( 'sass', function() {
-  return gulp.src( 'assets/scss/foundation.scss' )
+  return gulp.src( 'assets/scss/style.scss' )
     .pipe( $.sourcemaps.init() )
     .pipe( $.sass( {
-      includePaths: PATHS.sass
+      includePaths: PATHS.sass,
+      sourceComments: true
     } ) )
     .on( 'error', $.notify.onError( {
         message: "<%= error.message %>",
