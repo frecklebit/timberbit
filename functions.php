@@ -37,7 +37,6 @@ Timber::$cache = false;
 Timber::$dirname = array(
 	'views',
 	'views/templates',
-	'views/partials',
 );
 
 // Various clean up functions
