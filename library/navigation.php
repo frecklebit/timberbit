@@ -51,10 +51,9 @@ endif;
  * 4) Save menu. Your menu item will now appear as a button in your top-menu
  */
 if ( ! function_exists( 'timberpress_add_menuclass' ) ) :
+function timberpress_add_menuclass( $ulclass ) {
 	$find = array( '/<a rel="button"/', '/<a title=".*?" rel="button"/' );
 	$replace = array( '<a rel="button" class="button"', '<a rel="button" class="button"' );
-function timberpress_add_menuclass( $ulclass ) {
-
 	return preg_replace( $find, $replace, $ulclass, 1 );
 }
 add_filter( 'wp_nav_menu', 'timberpress_add_menuclass' );
@@ -69,7 +68,7 @@ endif;
 if ( ! function_exists( 'timberpress_breadcrumb' ) ) :
 function timberpress_breadcrumb( $showhome = true, $separatorclass = false, $return = false ) {
 
-	$context = Timber::get_context();
+	$context = array();
 	$trail   = array();
 
 	// Settings
@@ -77,8 +76,8 @@ function timberpress_breadcrumb( $showhome = true, $separatorclass = false, $ret
 	$home_title = 'Home';
 
 	// Build the breadcrumbs
-	$context['breadcrumb']['id']    = 'breadcrumbs';
-	$context['breadcrumb']['class'] = 'breadcrumbs';
+	$context['container_id']     = 'breadcrumbs';
+	$context['container_class']  = 'breadcrumbs';
 
 	// Get the query & post information
 	global $post, $wp_query;
@@ -338,7 +337,7 @@ function timberpress_breadcrumb( $showhome = true, $separatorclass = false, $ret
 
 	}
 
-	$context['breadcrumb']['trail'] = $trail;
+	$context['trail'] = $trail;
 
 	if ( ! $return ) {
 		Timber::render( 'partials/breadcrumb.twig', $context );

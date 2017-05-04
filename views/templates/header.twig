@@ -1,0 +1,53 @@
+<div class="top-bar">
+  <div class="top-bar-title">
+
+    <div class="row align-middle">
+
+      {# Mobile Menu Button Left #}
+      {% if menu_button_position == 'left' %}
+        <div class="menu-button shrink column">
+          {% include 'partials/menu-button.twig' with {
+            mobile_menu_id: mobile_menu_id
+          } only %}
+        </div>
+      {% endif %}
+
+      {# Site Identity #}
+      {% if has_custom_logo %}
+        <div class="custom-logo shrink column">
+          {{ the_custom_logo }}
+        </div>
+      {% endif %}
+
+      {% if display_header_text %}
+        <div class="header-text expand column">
+          {{site.name}}
+        </div>
+      {% endif %}
+
+    </div>
+  </div>
+
+  <div>
+    <div class="top-bar-right">
+
+      {# Desktop Menu #}
+      {{ function( 'timberpress_top_bar_r' ) }}
+
+      {# Mobile Top Bar Menu #}
+      {% if mobile_menu_layout == 'topbar' %}
+        {% include 'mobile-top-bar.twig' with {
+          mobile_menu_id: mobile_menu_id
+        } only %}
+      {% endif %}
+
+      {# Mobile Menu Button Right #}
+      {% if menu_button_position == 'right' %}
+        {% include 'partials/menu-button.twig' with {
+          mobile_menu_id: mobile_menu_id
+        } only %}
+      {% endif %}
+
+    </div>
+  </div>
+</div>

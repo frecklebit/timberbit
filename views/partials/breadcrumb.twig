@@ -1,7 +1,7 @@
-{% if not is_home %}
+{% if trail|length > 0 %}
 <nav aria-label="You are here:" role="navigation">
-  <ul id="{{ breadcrumb.id }}" class="{{ breadcrumb.class }}">
-    {% for crumb in breadcrumb.trail %}
+  <ul id="{{ container_id }}" class="{{ container_class }}">
+    {% for crumb in trail %}
 
       {# Crumb #}
       <li class="{{crumb.class}}">

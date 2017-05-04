@@ -1,0 +1,36 @@
+// TimberPress
+// github.com/frecklebit/timberpress
+// Licensed under MIT Open Source
+
+////
+/// @group modules
+////
+
+// Header Text Font Size
+// @type Number
+$header-text-font-size: .825rem !default;
+
+// Header text font weight
+// @type mixed
+$header-text-font-weight: medium !default;
+
+// Spacing between the header text and custom logo
+// @type Number
+$header-text-spacing: rem-calc(10px) !default;
+
+// Header text divider
+// @type Mixed
+$header-text-border: 1px solid rgba($light-gray, .25);
+
+
+.custom-logo + .header-text {
+  font-size: $header-text-font-size;
+  font-weight: $header-text-font-weight;
+}
+
+@include breakpoint(medium) {
+  .custom-logo.has-border {
+    border-right: $header-text-border;
+    line-height: normal;
+  }
+};
