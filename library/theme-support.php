@@ -34,8 +34,20 @@ function timberpress_theme_support() {
 	// RSS thingy
 	add_theme_support( 'automatic-feed-links' );
 
+	// Allow partial refreshes of widgets in Customizer
+	add_theme_support( 'customize-selective-refresh-widgets' );
+
 	// Add post formats support: http://codex.wordpress.org/Post_Formats
 	add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' ) );
+
+	// Add custom logo support: https://codex.wordpress.org/Theme_Logo
+	add_theme_support( 'custom-logo', array(
+		'height'      => 30,
+		'width'       => 185,
+		'flex-width'  => true,
+		'flex-height' => false,
+		'header-text' => array( 'site-title', 'site-description' ),
+	) );
 
 	// Declare WooCommerce support per
 	// http://docs.woothemes.com/document/third-party-custom-theme-compatibility/

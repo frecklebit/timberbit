@@ -64,8 +64,6 @@ require_once( 'library/enqueue-scripts.php' );
 // Theme Support
 require_once( 'library/theme-support.php' );
 
-// Add nav options to Customizer
-require_once( 'library/custom-nav.php' );
 // Add WP Customizer options
 require_once( 'library/custom-header.php' );
 require_once( 'library/custom-colors.php' );
@@ -82,73 +80,5 @@ require_once( 'library/add-to-twig.php' );
 // Add to global context
 require_once( 'library/add-to-context.php' );
 
-
-class TimberPress extends TimberSite {
-
-	function __construct()
-	{
-		add_filter( 'timber_context', array( $this, 'add_to_context' ) );
-		add_filter( 'get_twig', array( $this, 'add_to_twig' ) );
-		add_action( 'init', array( $this, 'register_post_types' ) );
-		add_action( 'init', array( $this, 'register_taxonomies' ) );
-
-		parent::__construct();
-	}
-
-	function register_post_types()
-	{
-		//this is where you can register custom post types
-	}
-
-	function register_taxonomies()
-	{
-		//this is where you can register custom taxonomies
-	}
-
-	function add_to_context( $context )
-	{
-		$context['site']          = $this;
-		$context['is_front']      = is_front_page();
-		$context['is_home']       = is_home();
-		$context['is_page']       = is_page();
-		$context['is_single']     = is_single();
-		$context['is_attachment'] = is_attachment();
-		$context['is_category']   = is_category();
-		$context['is_tag']        = is_tag();
-		$context['is_date']       = is_date();
-		$context['is_day']        = is_day();
-		$context['is_month']      = is_month();
-		$context['is_year']       = is_year();
-		$context['is_time']       = is_time();
-		$context['is_author']     = is_author();
-		$context['is_search']     = is_search();
-		$context['is_404']        = is_404();
-		$context['is_paged']      = is_paged();
-		$context['is_preview']    = is_preview();
-		$context['is_archive']    = is_archive();
-
-		// Breadcrumbs
-		if ( function_exists( 'timberpress_breadcrumb' ) ) {
-			$context['breadcrumbs'] = timberpress_breadcrumb( true, false, true );
-		}
-
-		return $context;
-	}
-
-	function myfoo( $text )
-	{
-		$text .= ' bar!';
-		return $text;
-	}
-
-	function add_to_twig( $twig )
-	{
-		/* this is where you can add your own functions to twig */
-		$twig->addExtension( new Twig_Extension_StringLoader() );
-		$twig->addFilter('myfoo', new Twig_SimpleFilter('myfoo', array($this, 'myfoo')));
-		return $twig;
-	}
-
-}
-
-new TimberPress();
+// Start a new Timber Site
+new TimberSite();
