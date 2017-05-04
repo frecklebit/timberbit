@@ -30,3 +30,16 @@ function timberpress_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'timberpress_scripts' );
 endif;
+
+/**
+ * Enqueue custom customize scripts
+ */
+if ( ! function_exists( 'timberpress_customize_enqueue' ) ):
+function timberpress_customize_enqueue() {
+
+	// Enqueue customizer scripts
+	wp_enqueue_script( 'timberpress-customize', get_template_directory_uri() . '/assets/javascript/customize.js', array( 'jquery', 'customize-controls' ), false, true );
+
+}
+add_action( 'customize_controls_enqueue_scripts', 'timberpress_customize_enqueue' );
+endif;
