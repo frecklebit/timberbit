@@ -66,6 +66,7 @@ require_once( 'library/theme-support.php' );
 
 // Add nav options to Customizer
 require_once( 'library/custom-nav.php' );
+require_once( 'library/custom-header.php' );
 
 // Change WP's stick post class
 require_once( 'library/sticky-posts.php' );
