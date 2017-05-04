@@ -1,0 +1,5 @@
+linters:
+  SelectorDepth:
+    enabled: false
+  EmptyRule:
+    enabled: false
