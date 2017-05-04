@@ -6,7 +6,11 @@
  * @since TimberPress 1.0.0
  */
 
-// Pagination
+/**
+ * Pagination
+ *
+ * @return [type] [description]
+ */
 if ( ! function_exists( 'timberpress_pagination' ) ) :
 function timberpress_pagination() {
 	global $wp_query;
@@ -42,27 +46,49 @@ endif;
 
 /**
  * A fallback when no navigation is selected by default
+ *
+ * @param  array $context The context to add to.
+ * @return array          Filtered context.
  */
 if ( ! function_exists( 'timberpress_menu_fallback' ) ) :
-function timberpress_menu_fallback() {
-	echo '<div class="alert-box secondary">';
-	/* translators: %1$s: link to menus, %2$s: link to customize. */
-	printf( __( 'Please assign a menu to the primary menu location under %1$s or %2$s the design.', 'timberpress' ) );
-	/* translators: %s: menu url */
-	sprintf(
-		__( '<a href="%s">Menus</a>', 'timberpress' ),
-		get_admin_url( get_current_blog_id(), 'nav-menus.php' )
+function timberpress_menu_fallback( $context ) {
+
+	$callout = array(
+		'color' => 'secondary',
+		'html'  => __( 'Please assign a menu to the primary menu location under %1$s or %2$s the design.', 'timberpress' ),
 	);
-	/* translators: %s: customize url */
-	sprintf(
-		__( '<a href="%s">Customize</a>', 'timberpress' ),
-		get_admin_url( get_current_blog_id(), 'customize.php' )
+
+	$callout['html'] = sprintf( $callout['html'],
+
+		// Set Menu URL
+		sprintf(
+			__( '<a href="%s">Menus</a>', 'timberpress' ),
+			get_admin_url( get_current_blog_id(), 'nav-menus.php' )
+		),
+
+		// Set Customizer URL
+		sprintf(
+			__( '<a href="%s">Customize</a>', 'timberpress' ),
+			get_admin_url( get_current_blog_id(), 'customize.php' )
+		)
+
 	);
-	echo '</div>';
+
+	// Compile callout and add to global context
+	$context['menu_fallback'] = Timber::compile( 'partials/callout.twig', $callout );
+
+	return $context;
 }
+add_filter( 'timber/context', 'timberpress_menu_fallback' );
 endif;
 
-// Add Foundation 'active' class for the current menu item
+/**
+ * Add Foundation 'active' class for the current menu item
+ *
+ * @param  array  $classes Array of menu item classes
+ * @param  object $item    WP Menu item object
+ * @return array           Array of menu item classes
+ */
 if ( ! function_exists( 'timberpress_active_nav_class' ) ) :
 function timberpress_active_nav_class( $classes, $item ) {
 	if ( 1 === $item->current || true === $item->current_item_ancestor ) {
@@ -73,7 +99,12 @@ function timberpress_active_nav_class( $classes, $item ) {
 add_filter( 'nav_menu_css_class', 'timberpress_active_nav_class', 10, 2 );
 endif;
 
-// Use the active class of ZURB Foundation on wp_list_pages output.
+/**
+ * Use the active class of ZURB Foundation on wp_list_pages output.
+ *
+ * @param  string $input HTML element
+ * @return string        Filtered HTML element
+ */
 if ( ! function_exists( 'timberpress_active_list_pages_class' ) ) :
 function timberpress_active_list_pages_class( $input ) {
 
@@ -86,7 +117,15 @@ function timberpress_active_list_pages_class( $input ) {
 add_filter( 'wp_list_pages', 'timberpress_active_list_pages_class', 10, 2 );
 endif;
 
-// Enable Foundation responsive embeds for WP video embeds
+/**
+ * Enable Foundation responsive embeds for WP video embeds
+ *
+ * @param  string  $html    Embedded object HTML
+ * @param  string  $url     URL of the Embedded object
+ * @param  array   $attr    Attributes of the embedded object
+ * @param  integer $post_id ID of the post
+ * @return string           Filtered HTML
+ */
 if ( ! function_exists( 'timberpress_responsive_video_oembed_html' ) ) :
 function timberpress_responsive_video_oembed_html( $html, $url, $attr, $post_id ) {
 
@@ -143,26 +182,26 @@ function timberpress_responsive_video_oembed_html( $html, $url, $attr, $post_id 
 	} else {
 		return $html;
 	}
+
 }
 add_filter( 'embed_oembed_html', 'timberpress_responsive_video_oembed_html', 10, 4 );
 endif;
 
-// Get mobile menu ID
-if ( ! function_exists( 'timberpress_mobile_menu_id' ) ) :
-function timberpress_mobile_menu_id() {
-	if ( get_theme_mod( 'wpt_mobile_menu_layout' ) === 'offcanvas' ) {
-		echo 'off-canvas-menu';
-	} else {
-		echo 'mobile-menu';
-	}
-}
-endif;
-
-// Get title bar responsive toggle attribute
+/**
+ * Add title bar responsive toggle attribute to context
+ *
+ * @param  array $context The context to add to.
+ * @return array          Filtered context.
+ */
 if ( ! function_exists( 'timberpress_title_bar_responsive_toggle' ) ) :
-function timberpress_title_bar_responsive_toggle() {
+function timberpress_title_bar_responsive_toggle( $context ) {
+
 	if ( ! get_theme_mod( 'wpt_mobile_menu_layout' ) || get_theme_mod( 'wpt_mobile_menu_layout' ) === 'topbar' ) {
-		echo 'data-responsive-toggle="mobile-menu"';
+		$context['title_bar_responsive_toggle'] = 'data-responsive-toggle="mobile-menu"';
 	}
+
+	return $context;
+
 }
+add_filter( 'timber/context', 'timberpress_title_bar_responsive_toggle' );
 endif;
